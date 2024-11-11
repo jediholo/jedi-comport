@@ -13,7 +13,7 @@ docker compose up -d
 
 Then, point your browser to http://comport.dev.jediholo.net and you should see the JEDI Comport forum.
 
-Login as admin/admin, then go to the ACP:
+Login as admin/admin123, then go to the ACP:
 - In Customize > Install Styles, install the `jediholo` style.
 - In General > Board settings, set `jediholo` as the Default and Guest style.
 

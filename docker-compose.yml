@@ -1,15 +1,19 @@
 services:
   phpbb:
-    image: bitnami/phpbb:3.3.12
+    image: ghcr.io/jediholo/jedi-comport:latest
+    restart: on-failure
+    build:
+      context: .
     ports:
       - '127.0.0.12:80:8080'
     volumes:
-      - 'phpbb:/bitnami/phpbb'
-      - './setup.sh:/docker-entrypoint-init.d/setup.sh'
-      - './styles/jediholo:/phpbb/styles/jediholo'
+      - 'phpbb-files:/srv/www/apps/phpbb/files'
+      - 'phpbb-images:/srv/www/apps/phpbb/images'
+      - 'phpbb-store:/srv/www/apps/phpbb/store'
+      - './styles/jediholo:/srv/www/apps/phpbb/styles/jediholo'
     environment:
       - PHPBB_USERNAME=admin
-      - PHPBB_PASSWORD=admin
+      - PHPBB_PASSWORD=admin123
       - PHPBB_FORUM_NAME=JEDI Comport
       - PHPBB_FORUM_DESCRIPTION=The JEDI HoloNet Communications Port
       - PHPBB_EMAIL=admin@jediholo.net
@@ -19,6 +23,7 @@ services:
       - PHPBB_DATABASE_NAME=jedi-comport
   mysql:
     image: mariadb:10.11
+    restart: on-failure
     ports:
       - '127.0.0.12:3306:3306'
     volumes:
@@ -30,4 +35,6 @@ services:
       - MYSQL_DATABASE=jedi-comport
 volumes:
   mysql:
-  phpbb:
+  phpbb-files:
+  phpbb-images:
+  phpbb-store:
