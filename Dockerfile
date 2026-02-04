@@ -1,5 +1,5 @@
 # phpBB 3.3 base image
-FROM ghcr.io/fab-infra/phpbb:3.3-opensuse15
+FROM ghcr.io/fab-infra/phpbb:3.3-opensuse16
 
 # Download and extract extensions
 RUN for PHPBB_EXT in 184661 204724 206731; do \
