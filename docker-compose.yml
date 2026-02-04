@@ -22,7 +22,7 @@ services:
       - PHPBB_DATABASE_PASSWORD=jediholo
       - PHPBB_DATABASE_NAME=jedi-comport
   mysql:
-    image: mariadb:10.11
+    image: mariadb:11.8
     restart: on-failure
     ports:
       - '127.0.0.12:3306:3306'
